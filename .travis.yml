@@ -2,6 +2,8 @@ language: java
 
 jdk: openjdk8
 
+env:
+ TRAVIS_JOB_NAME=Travis_Sample
 services:
   - docker
 
@@ -11,5 +13,8 @@ cache:
   directories:
   - $HOME/.m2
 
-script: mvn clean install -DcloudName=${cloudName} -DsecurityToken=${securityToken} -Dreportium-job-name=${TRAVIS_JOB_NAME} -Dreportium-job-number=${TRAVIS_JOB_NUMBER} -Dreportium-job-branch=${TRAVIS_BRANCH} -Dreportium-tags="test"
-script: echo "Perfecto Suite Report- https://${cloudName}.reporting.perfectomobile.com/library?jobName[0]=${TRAVIS_JOB_NAME}&jobNumber[0]=${TRAVIS_JOB_NUMBER}"
+script: 
+  mvn clean install -DcloudName=${cloudName} -DsecurityToken=${securityToken} -Dreportium-job-name=${TRAVIS_JOB_NAME} -Dreportium-job-number=${TRAVIS_JOB_NUMBER} -Dreportium-job-branch=${TRAVIS_BRANCH} -Dreportium-tags="test"
+
+after_script: 
+  echo "Perfecto Suite Report- https://${cloudName}.reporting.perfectomobile.com/library?jobName[0]=${TRAVIS_JOB_NAME}&jobNumber[0]=${TRAVIS_JOB_NUMBER}"
