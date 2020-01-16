@@ -56,3 +56,5 @@ TestNG Plugin is built-in in the IntelliJ IDEA, from version 7 onwards.
 * This project contains a .travis.yml file  which will help Travis webhooks to listen for git updates. 
 * It will also print the suite level report at the end of execution.
 * The current build status of Travis in github will be showcased in readme.md file. More info [here](https://docs.travis-ci.com/user/status-images/)
+
+Kindly reach out to [Professional Services](https://www.perfecto.io/services/professional-services-implementation) team of Perfecto to implement this in your Organization.
