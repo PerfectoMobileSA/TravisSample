@@ -60,14 +60,14 @@ public class PerfectoAppium {
 		try {
 			reportiumClient.testStart("My Calculator Test", new TestContext("tag2", "tag3"));
 			reportiumClient.stepStart("Perform addition");
-			driver.findElement(By.xpath("//*[contains(@resource-id,'popupcalculator:id/bt_01')]")).click();
+			driver.findElement(By.xpath("//*[contains(@resource-id,'popupcalculator:id/bt_01') or @text='1']")).click();
 			driver.findElement(By.xpath("//*[contains(@resource-id,'add')]")).click();
-			driver.findElement(By.xpath("//*[contains(@resource-id,'popupcalculator:id/bt_01')]")).click();
+			driver.findElement(By.xpath("//*[contains(@resource-id,'popupcalculator:id/bt_01') or @text='1']")).click();
 			driver.findElement(By.xpath("//*[contains(@resource-id,'equal')]")).click();
 			reportiumClient.stepEnd();
 
 			reportiumClient.stepStart("Verify Total");
-			WebElement results=driver.findElement(By.xpath("//*[contains(@class,'EditText')]"));
+			WebElement results=driver.findElement(By.xpath("//*[contains(@class,'EditText')] | //*[@resource-id='com.sec.android.app.popupcalculator:id/calc_edt_formula']"));
 			if (!results.getText().equals("2"))
 				throw new RuntimeException("Actual calculated number is : " + results.getText() + ". It did not match with expected value: 2");
 			reportiumClient.stepEnd();
@@ -75,7 +75,6 @@ public class PerfectoAppium {
 			//STOP TEST
 			TestResult testResult = TestResultFactory.createSuccess();
 			reportiumClient.testStop(testResult);
-
 		} catch (Exception e) {
 			TestResult testResult = TestResultFactory.createFailure(e);
 			reportiumClient.testStop(testResult);
