@@ -3,7 +3,7 @@ language: java
 jdk: openjdk8
 
 env:
- TRAVIS_JOB_NAME=Travis_Sample
+ TRAVIS_JOB_NAME=TravisSample
 services:
   - docker
 
